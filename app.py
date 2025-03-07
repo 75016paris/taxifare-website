@@ -39,8 +39,7 @@ passenger_count = st.number_input("Number of Passengers", min_value=1, max_value
 
 def get_map_data():
     return pd.DataFrame(
-        [pickup_longitude, pickup_latitude],
-        [dropoff_longitude, dropoff_latitude],
+        [[pickup_longitude, pickup_latitude], [dropoff_longitude, dropoff_latitude]],
         columns=['lon', 'lat']
     )
 
