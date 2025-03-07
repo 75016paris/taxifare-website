@@ -32,28 +32,22 @@ pickup_latitude = 40.748817
 dropoff_longitude = -73.985428
 dropoff_latitude = 40.748817
 
-# Buttons to choose pickup and dropoff locations
-if st.button("Choose Pickup Location"):
-    st.session_state['choose_location'] = 'pickup'
-if st.button("Choose Dropoff Location"):
-    st.session_state['choose_location'] = 'dropoff'
-
-# Update coordinates based on map click
-if 'choose_location' in st.session_state:
-    if 'last_clicked' in st.session_state:
-        if st.session_state['choose_location'] == 'pickup':
-            pickup_longitude, pickup_latitude = st.session_state['last_clicked']
-        elif st.session_state['choose_location'] == 'dropoff':
-            dropoff_longitude, dropoff_latitude = st.session_state['last_clicked']
-        del st.session_state['choose_location']
-        del st.session_state['last_clicked']
-
 # Create a map centered around the default pickup location
 m = folium.Map(location=[pickup_latitude, pickup_longitude], zoom_start=15)
 
-# Add markers for pickup and dropoff locations
-pickup_marker = folium.Marker([pickup_latitude, pickup_longitude], popup="Pickup Location", icon=folium.Icon(color="green"))
-dropoff_marker = folium.Marker([dropoff_latitude, dropoff_longitude], popup="Dropoff Location", icon=folium.Icon(color="red"))
+# Add draggable markers for pickup and dropoff locations
+pickup_marker = folium.Marker(
+    [pickup_latitude, pickup_longitude],
+    popup="Pickup Location",
+    icon=folium.Icon(color="green"),
+    draggable=True
+)
+dropoff_marker = folium.Marker(
+    [dropoff_latitude, dropoff_longitude],
+    popup="Dropoff Location",
+    icon=folium.Icon(color="red"),
+    draggable=True
+)
 
 pickup_marker.add_to(m)
 dropoff_marker.add_to(m)
@@ -61,9 +55,12 @@ dropoff_marker.add_to(m)
 # Display the map
 map_data = st_folium(m, width=700, height=500)
 
-# Save the last clicked location
-if map_data['last_clicked']:
-    st.session_state['last_clicked'] = (map_data['last_clicked']['lng'], map_data['last_clicked']['lat'])
+# Update coordinates based on marker drag
+if map_data['last_object_clicked']:
+    if map_data['last_object_clicked']['popup'] == "Pickup Location":
+        pickup_longitude, pickup_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
+    elif map_data['last_object_clicked']['popup'] == "Dropoff Location":
+        dropoff_longitude, dropoff_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
 
 # Display updated coordinates in input fields
 st.number_input("Pickup Longitude", value=pickup_longitude, key="pickup_longitude")
