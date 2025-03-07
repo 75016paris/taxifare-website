@@ -37,8 +37,8 @@ X_new = pd.datafram(dict(date_and_time=date_and_time,
                           pickup_longitude = pickup_longitude,
                           pickup_latitude = pickup_latitude,
                           dropoff_longitude = dropoff_longitude,
-                          dropoff latitude = dropoff latitude,
-                          passenger count = passenger count))
+                          dropoff_latitude = dropoff_latitude,
+                          passenger_count = passenger_count))
 
 
 X_new
