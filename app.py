@@ -52,18 +52,6 @@ dropoff_marker = folium.Marker(
 pickup_marker.add_to(map)
 dropoff_marker.add_to(map)
 
-# Add the dropoff marker to the map
-dropoff_marker.add_to(map)
-
-# Function to extract latitude and longitude from the marker
-def get_marker_coordinates(marker):
-    return marker.location[0], marker.location[1]
-
-# Get latitude and longitude of the dropoff marker
-d_dropoff_latitude, d_dropoff_longitude = get_marker_coordinates(dropoff_marker)
-p_dropoff_latitude, p_dropoff_longitude = get_marker_coordinates(pickup_marker)
-
-d_dropoff_latitude, d_dropoff_longitude, p_dropoff_latitude, p_dropoff_longitude
 
 # Display the map
 map_data = st_folium(map, width=700, height=500)
@@ -81,6 +69,16 @@ pickup_latitude_input = st.number_input("Pickup Latitude", value=pickup_latitude
 dropoff_longitude_input = st.number_input("Dropoff Longitude", value=dropoff_longitude, key="dropoff_longitude")
 dropoff_latitude_input = st.number_input("Dropoff Latitude", value=dropoff_latitude, key="dropoff_latitude")
 passenger_count = st.number_input("Number of Passengers", min_value=1, max_value=6, value=1)
+
+# Function to extract latitude and longitude from the marker
+def get_marker_coordinates(marker):
+    return marker.location[0], marker.location[1]
+
+# Get latitude and longitude of the dropoff marker
+d_dropoff_latitude, d_dropoff_longitude = get_marker_coordinates(dropoff_marker)
+p_dropoff_latitude, p_dropoff_longitude = get_marker_coordinates(pickup_marker)
+
+d_dropoff_latitude, d_dropoff_longitude, p_dropoff_latitude, p_dropoff_longitude
 
 url = 'https://taxifare.lewagon.ai/predict'
 
