@@ -20,7 +20,7 @@ We are a space travel company
 - passenger count
 '''
 
-date_and_time = st.text_input('date and time', '01/01/00')
+date_and_time = st.text_input('date and time')
 
 pickup_longitude = st.text_input('pickup longitude')
 
@@ -33,6 +33,15 @@ dropoff_latitude = st.text_input('dropoff latitude')
 passenger_count = st.number_input('passenger count', min_value=1, max_value=8, step=1)
 
 
+X_new = pd.datafram(dict(date_and_time=date_and_time,
+                          pickup_longitude = pickup_longitude,
+                          pickup_latitude = pickup_latitude,
+                          dropoff_longitude = dropoff_longitude,
+                          dropoff latitude = dropoff latitude,
+                          passenger count = passenger count)
+
+
+X_new
 
 
 '''
