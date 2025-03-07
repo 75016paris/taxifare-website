@@ -32,6 +32,12 @@ pickup_latitude = 40.748817
 dropoff_longitude = -73.985428
 dropoff_latitude = 40.748817
 
+# Buttons to choose pickup and dropoff locations
+if st.button("Choose Pickup Location"):
+    st.session_state['choose_location'] = 'pickup'
+if st.button("Choose Dropoff Location"):
+    st.session_state['choose_location'] = 'dropoff'
+
 # Create a map centered around the default pickup location
 m = folium.Map(location=[pickup_latitude, pickup_longitude], zoom_start=15)
 
@@ -47,12 +53,12 @@ map_data = st_folium(m, width=700, height=500)
 
 # Update coordinates based on map click
 if map_data['last_clicked']:
-    if 'pickup' not in st.session_state:
-        st.session_state['pickup'] = True
-        pickup_longitude, pickup_latitude = map_data['last_clicked']['lng'], map_data['last_clicked']['lat']
-    else:
-        dropoff_longitude, dropoff_latitude = map_data['last_clicked']['lng'], map_data['last_clicked']['lat']
-        del st.session_state['pickup']
+    if 'choose_location' in st.session_state:
+        if st.session_state['choose_location'] == 'pickup':
+            pickup_longitude, pickup_latitude = map_data['last_clicked']['lng'], map_data['last_clicked']['lat']
+        elif st.session_state['choose_location'] == 'dropoff':
+            dropoff_longitude, dropoff_latitude = map_data['last_clicked']['lng'], map_data['last_clicked']['lat']
+        del st.session_state['choose_location']
 
 # Display updated coordinates in input fields
 st.number_input("Pickup Longitude", value=pickup_longitude, key="pickup_longitude")
