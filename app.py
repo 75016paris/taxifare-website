@@ -5,6 +5,7 @@ import numpy as np
 from datetime import datetime
 import folium
 from streamlit_folium import st_folium
+from folium.plugins import Geocoder
 
 '''
 # SPACE TRAVEL TAXI CO.
@@ -32,19 +33,6 @@ pickup_latitude = 40.748817
 dropoff_longitude = -73.985428
 dropoff_latitude = 40.748817
 
-def geocode_address(address):
-    base_url = 'https://maps.googleapis.com/maps/api/geocode/json'
-    params = {'address': address}
-    response = requests.get(base_url, params=params)
-    results = response.json()['results']
-    if results:
-        location = results[0]['geometry']['location']
-        return location['lat'], location['lng']
-    else:
-        return None, None
-
-location_lat, location_lng = geocode_address('32 E 1st St Lower Level, New York, NY 10003, États-Unis')
-location_lat, location_lng
 
 # Create a map centered around the default pickup location
 map = folium.Map(location=[pickup_latitude, pickup_longitude], zoom_start=15)
@@ -66,6 +54,21 @@ dropoff_marker = folium.Marker(
 pickup_marker.add_to(map)
 dropoff_marker.add_to(map)
 
+
+url2  = https://nominatim.openstreetmap.org/search?<params>
+
+pickup_adress = st.text_input('pickup_adress', value=pickup_adress, key='pickup_adress')
+dropoff_adress = st.text_input('dropoff_adress', value=dropoff_adress, key='dropoff_adress')
+
+if st.button("Adress"):
+    params2 = {
+        "pickup_adress": dropoff_adress,
+        "dropoff_adress": dropoff_adress
+    }
+    response = requests.get(url2, params=params2)
+
+        prediction = response.json().get("fare", "Error")
+        st.markdown(prediction)
 
 # Display the map
 map_data = st_folium(map, width=700, height=500)
