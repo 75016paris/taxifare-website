@@ -38,6 +38,16 @@ if st.button("Choose Pickup Location"):
 if st.button("Choose Dropoff Location"):
     st.session_state['choose_location'] = 'dropoff'
 
+# Update coordinates based on map click
+if 'choose_location' in st.session_state:
+    if 'last_clicked' in st.session_state:
+        if st.session_state['choose_location'] == 'pickup':
+            pickup_longitude, pickup_latitude = st.session_state['last_clicked']
+        elif st.session_state['choose_location'] == 'dropoff':
+            dropoff_longitude, dropoff_latitude = st.session_state['last_clicked']
+        del st.session_state['choose_location']
+        del st.session_state['last_clicked']
+
 # Create a map centered around the default pickup location
 m = folium.Map(location=[pickup_latitude, pickup_longitude], zoom_start=15)
 
@@ -51,14 +61,9 @@ dropoff_marker.add_to(m)
 # Display the map
 map_data = st_folium(m, width=700, height=500)
 
-# Update coordinates based on map click
+# Save the last clicked location
 if map_data['last_clicked']:
-    if 'choose_location' in st.session_state:
-        if st.session_state['choose_location'] == 'pickup':
-            pickup_longitude, pickup_latitude = map_data['last_clicked']['lng'], map_data['last_clicked']['lat']
-        elif st.session_state['choose_location'] == 'dropoff':
-            dropoff_longitude, dropoff_latitude = map_data['last_clicked']['lng'], map_data['last_clicked']['lat']
-        del st.session_state['choose_location']
+    st.session_state['last_clicked'] = (map_data['last_clicked']['lng'], map_data['last_clicked']['lat'])
 
 # Display updated coordinates in input fields
 st.number_input("Pickup Longitude", value=pickup_longitude, key="pickup_longitude")
