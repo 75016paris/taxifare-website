@@ -55,7 +55,7 @@ pickup_marker.add_to(map)
 dropoff_marker.add_to(map)
 
 
-url2  = https://nominatim.openstreetmap.org/search?<params>
+url2  = 'https://nominatim.openstreetmap.org/search?'
 
 pickup_adress = st.text_input('pickup_adress', value=pickup_adress, key='pickup_adress')
 dropoff_adress = st.text_input('dropoff_adress', value=dropoff_adress, key='dropoff_adress')
