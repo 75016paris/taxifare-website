@@ -52,7 +52,7 @@ data = pd.DataFrame({
     'longitude': [pickup_longitude]
 })
 
-st.map(data)
+st.map(data, zoom=15)
 
 
 url = 'https://taxifare.lewagon.ai/predict'
