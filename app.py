@@ -33,7 +33,7 @@ dropoff_longitude = -73.985428
 dropoff_latitude = 40.748817
 
 # Create a map centered around the default pickup location
-m = folium.Map(location=[pickup_latitude, pickup_longitude], zoom_start=15)
+map = folium.Map(location=[pickup_latitude, pickup_longitude], zoom_start=15)
 
 # Add draggable markers for pickup and dropoff locations
 pickup_marker = folium.Marker(
@@ -49,18 +49,18 @@ dropoff_marker = folium.Marker(
     draggable=True
 )
 
-pickup_marker.add_to(m)
-dropoff_marker.add_to(m)
+pickup_marker.add_to(map)
+dropoff_marker.add_to(map)
 
 # Display the map
-map_data = st_folium(m, width=700, height=500)
+map_data = st_folium(map, width=700, height=500)
 
 # Update coordinates based on marker drag
-if map_data and 'last_object_clicked' in map_data:
-    if map_data['last_object_clicked']['popup'] == "Pickup Location":
-        pickup_longitude, pickup_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
-    elif map_data['last_object_clicked']['popup'] == "Dropoff Location":
-        dropoff_longitude, dropoff_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
+if map_data and 'pickup_marker' in map_data:
+    if map_data['pickup_marker']['popup'] == "Pickup Location":
+        pickup_longitude, pickup_latitude = map_data['pickup_marker']['lng'], map_data['pickup_marker']['lat']
+    elif map_data['dropoff_marker']['popup'] == "Dropoff Location":
+        dropoff_longitude, dropoff_latitude = map_data['dropoff_marker']['lng'], map_data['dropoff_marker']['lat']
 
 # Display updated coordinates in input fields
 pickup_longitude_input = st.number_input("Pickup Longitude", value=pickup_longitude, key="pickup_longitude")
