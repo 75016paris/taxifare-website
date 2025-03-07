@@ -67,8 +67,8 @@ if st.button("Adress"):
     }
     response = requests.get(url2, params=params2)
 
-        prediction = response.json().get("fare", "Error")
-        st.markdown(prediction)
+    prediction = response.json().get("fare", "Error")
+    st.markdown(prediction)
 
 # Display the map
 map_data = st_folium(map, width=700, height=500)
