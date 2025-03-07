@@ -4,15 +4,16 @@ import requests
 from datetime import datetime
 
 '''
-# LOOSER TAXI APP WELCOM
+# SPACE TRAVEL TAXI CO.
 '''
 
 st.markdown(f'''
-We are a space travel company
+We are a space travel company,
 
-Please provide your location and desination,
+Please provide your location and desination.
 
-The space shuttle will pick you up in asap
+We will warp a vessel toward your destination asap.
+(Make sure to hold on to your hat, the wormholes open for your shuttle’s arrival could suck it in.)
 ''')
 
 
