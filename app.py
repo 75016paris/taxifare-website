@@ -52,7 +52,7 @@ if st.button("Predict Fare"):
     response = requests.get(url, params=params)
 
     prediction = response.json().get("fare", "Error")
-    st.markdown(f"#Fare: ${prediction:.2f}")
+    st.markdown(f"##  Fare: ${prediction:.2f}")
 
 # params = {
 #     'pickup_datetime': pickup_datetime,
