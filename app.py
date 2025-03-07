@@ -43,7 +43,7 @@ pickup_marker = folium.Marker(
     draggable=True
 )
 dropoff_marker = folium.Marker(
-    [dropoff_latitude, dropoff_longitude],
+    [dropoff_latitude+0.5, dropoff_longitude+0.5],
     popup="Dropoff Location",
     icon=folium.Icon(color="red"),
     draggable=True
