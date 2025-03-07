@@ -52,12 +52,6 @@ pickup = pd.DataFrame({
     'longitude': [pickup_longitude]
 })
 
-dropoff = pd.DataFrame({
-    'latitude': [dropoff_latitude],
-    'longitude': [dropoff_longitude]
-})
-
-st.map(pickup, zoom=15)
 st.map(dropoff, zoom=15)
 
 
