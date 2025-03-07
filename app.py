@@ -6,10 +6,11 @@ import numpy as np
 # LOOSER TAXI APP WELCOM
 '''
 
-st.markdown('''
+st.markdown(f'''
 We are a space travel company
 
 Please provide your location and desination
+The space shuttle will pick you up in {np.random(100,3300)}
 ''')
 
 
