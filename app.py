@@ -70,7 +70,7 @@ if st.button("Get Coordinates"):
         "format": "json"
     }
     response = requests.get(url2, params=params2)
-    respinse
+    response
 
 # Display the map
 map_data = st_folium(map, width=700, height=500)
