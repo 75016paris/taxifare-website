@@ -20,9 +20,7 @@ We are a space travel company
 - passenger count
 '''
 
-st.text_input('''
-date_and_time = st.text_input('date and time', '01/01/00')
-''')
+st.text_input('date and time', '01/01/00')
 
 st.text_input('''
 pickup_longitude = st.number_input('pickup longitude', format="%.6f")
