@@ -15,7 +15,7 @@ The space shuttle will pick you up in asap
 ''')
 
 
-date_and_time = st.text_input('date and time', '01/01/00')
+pickup_datetime = st.text_input('pickup datetime', '2014-07-06 19:18:00')
 
 pickup_longitude = st.text_input('pickup longitude')
 
@@ -50,7 +50,7 @@ See ? No need to load a `model.joblib` file in this app, we do not even need to 
 url = 'https://taxifare.lewagon.ai/predict'
 
 params = {
-    'date_and_time': date_and_time,
+    'pickup_datetime': pickup_datetime,
     'pickup_longitude': pickup_longitude,
     'pickup_latitude': pickup_latitude,
     'dropoff_longitude': dropoff_longitude,
