@@ -29,10 +29,12 @@ if 'dropoff_set' not in st.session_state:
     st.session_state.dropoff_set = False
 
 def get_map_data():
-    return pd.DataFrame(
-        [[-73.985428, 40.748817], [-73.985428, 40.748817]],
-        columns=['lon', 'lat']
-    )
+    data = []
+    if st.session_state.pickup_set:
+        data.append([st.session_state.pickup_longitude, st.session_state.pickup_latitude])
+    if st.session_state.dropoff_set:
+        data.append([st.session_state.dropoff_longitude, st.session_state.dropoff_latitude])
+    return pd.DataFrame(data, columns=['lon', 'lat'])
 
 df = get_map_data()
 
