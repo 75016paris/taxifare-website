@@ -37,15 +37,22 @@ dropoff_latitude = st.number_input("Dropoff Latitude", value=40.748817)
 passenger_count = st.number_input("Number of Passengers", min_value=1, max_value=6, value=1)
 
 
-def get_map_data():
-    return pd.DataFrame(
-        [[pickup_longitude, pickup_latitude], [dropoff_longitude, dropoff_latitude]],
-        columns=['lon', 'lat']
-    )
+# def get_map_data():
+#     return pd.DataFrame(
+#         [[pickup_longitude, pickup_latitude], [dropoff_longitude, dropoff_latitude]],
+#         columns=['lon', 'lat']
+#     )
 
-df = get_map_data()
+# df = get_map_data()
 
-st.map(df)
+# st.map(df)
+
+data = pd.DataFrame({
+    'latitude': [pickup_latitude],
+    'longitude': [pickup_longitude]
+})
+
+st.map(data)
 
 
 url = 'https://taxifare.lewagon.ai/predict'
