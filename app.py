@@ -13,6 +13,8 @@ We are a space travel company,
 Please provide your location and desination.
 
 We will warp a vessel toward your destination asap.
+
+\n
 (Make sure to hold on to your hat, the wormholes open for your shuttle’s arrival could suck it in.)
 ''')
 
