@@ -57,7 +57,8 @@ dropoff = pd.DataFrame({
     'longitude': [dropoff_longitude]
 })
 
-st.map(pickup, dropoff, zoom=15)
+st.map(pickup, zoom=15)
+st.map(dropoff, zoom=15)
 
 
 url = 'https://taxifare.lewagon.ai/predict'
