@@ -52,6 +52,8 @@ dropoff_marker = folium.Marker(
 pickup_marker.add_to(map)
 dropoff_marker.add_to(map)
 
+dropoff_marker
+
 # Display the map
 map_data = st_folium(map, width=700, height=500)
 
