@@ -52,6 +52,10 @@ dropoff_marker = folium.Marker(
 pickup_marker.add_to(m)
 dropoff_marker.add_to(m)
 
+pickup_marker
+dropoff_marker
+
+
 # Display the map
 map_data = st_folium(m, width=700, height=500)
 
@@ -63,10 +67,10 @@ if map_data['last_object_clicked']:
         dropoff_longitude, dropoff_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
 
 # Display updated coordinates in input fields
-pickup_longitude_input = st.number_input("Pickup Longitude", value=pickup_longitude, key="pickup_longitude")
-pickup_latitude_input = st.number_input("Pickup Latitude", value=pickup_latitude, key="pickup_latitude")
-dropoff_longitude_input = st.number_input("Dropoff Longitude", value=dropoff_longitude, key="dropoff_longitude")
-dropoff_latitude_input = st.number_input("Dropoff Latitude", value=dropoff_latitude, key="dropoff_latitude")
+#pickup_longitude_input = st.number_input("Pickup Longitude", value=pickup_longitude, key="pickup_longitude")
+#pickup_latitude_input = st.number_input("Pickup Latitude", value=pickup_latitude, key="pickup_latitude")
+#dropoff_longitude_input = st.number_input("Dropoff Longitude", value=dropoff_longitude, key="dropoff_longitude")
+#dropoff_latitude_input = st.number_input("Dropoff Latitude", value=dropoff_latitude, key="dropoff_latitude")
 passenger_count = st.number_input("Number of Passengers", min_value=1, max_value=6, value=1)
 
 if st.button("Update Location"):
