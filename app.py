@@ -32,6 +32,20 @@ pickup_latitude = 40.748817
 dropoff_longitude = -73.985428
 dropoff_latitude = 40.748817
 
+def geocode_address(address):
+    base_url = 'https://maps.googleapis.com/maps/api/geocode/json'
+    params = {'address': 'address'}
+    response = requests.get(base_url, params=params)
+    results = response.json()['results']
+    if results:
+        location = results:inlineRefs{references="&#91;&#123;&quot;type&quot;&#58;&quot;inline_reference&quot;,&quot;start_index&quot;&#58;1103,&quot;end_index&quot;&#58;1106,&quot;number&quot;&#58;0,&quot;url&quot;&#58;&quot;https&#58;//discuss.streamlit.io/t/streamlit-geolocation/30796&quot;,&quot;favicon&quot;&#58;&quot;https&#58;//imgs.search.brave.com/cnP-AtwWHvcfbMyCt2bZ8l9b_AiXSYteLVK99iJ4Deo/rs&#58;fit&#58;32&#58;32&#58;1&#58;0/g&#58;ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTBmZjE3NGY2/NjhlOGVhN2RjNGQ2/ODdmMDJjMmJiZGM0/OWE5YjU4ZWVkMmEx/YzMzZmE4YjkyYzI5/NDRlZjg3My9kaXNj/dXNzLnN0cmVhbWxp/dC5pby8&quot;,&quot;snippet&quot;&#58;&quot;Get&#32;User&#32;Location&#32;Button&#32;Show&#32;the&#32;Community!&#32;components&#58;&#32;Web&#32;Geolocation&#32;API&#32;to&#32;Get&#32;User's&#32;Location&#32;Using&#32;Streamlit&#32;geospatial&#32;•&#32;May&#32;14,&#32;2024&#58;&#32;April&#32;2,&#32;2024…&quot;&#125;&#93;"}['geometry']['location']
+        return location['lat'], location['lng']
+    else:
+        return None, None
+
+location['lat'], location['lng'] = geocode_address('32 Mott Street')
+location['lat'], location['lng']
+
 # Create a map centered around the default pickup location
 map = folium.Map(location=[pickup_latitude, pickup_longitude], zoom_start=15)
 
