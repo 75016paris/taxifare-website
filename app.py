@@ -70,14 +70,12 @@ dropoff_longitude_input = st.number_input("Dropoff Longitude", value=dropoff_lon
 dropoff_latitude_input = st.number_input("Dropoff Latitude", value=dropoff_latitude, key="dropoff_latitude")
 passenger_count = st.number_input("Number of Passengers", min_value=1, max_value=6, value=1)
 
-# Function to extract latitude and longitude from the marker
-def get_marker_coordinates(marker):
-    return marker.location[0], marker.location[1]
-
-# Get latitude and longitude of the dropoff marker
-if st.button('Update Pickup & Dropoff'):
-    pickup_longitude, pickup_latitude = get_marker_coordinates(pickup_marker)
-    dropoff_longitude, dropoff_latitude = get_marker_coordinates(dropoff_marker)
+# Update coordinates based on marker drag
+if map_data and 'last_object_clicked' in map_data:
+    if map_data['last_object_clicked']['popup'] == "Pickup Location":
+        pickup_longitude, pickup_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
+    elif map_data['last_object_clicked']['popup'] == "Dropoff Location":
+        dropoff_longitude, dropoff_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
 
 url = 'https://taxifare.lewagon.ai/predict'
 
