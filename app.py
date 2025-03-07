@@ -52,7 +52,18 @@ dropoff_marker = folium.Marker(
 pickup_marker.add_to(map)
 dropoff_marker.add_to(map)
 
-dropoff_marker
+# Add the dropoff marker to the map
+dropoff_marker.add_to(map)
+
+# Function to extract latitude and longitude from the marker
+def get_marker_coordinates(marker):
+    return marker.location[0], marker.location[1]
+
+# Get latitude and longitude of the dropoff marker
+d_dropoff_latitude, d_dropoff_longitude = get_marker_coordinates(dropoff_marker)
+p_dropoff_latitude, p_dropoff_longitude = get_marker_coordinates(pickup_marker)
+
+d_dropoff_latitude, d_dropoff_longitude, p_dropoff_latitude, p_dropoff_longitude
 
 # Display the map
 map_data = st_folium(map, width=700, height=500)
