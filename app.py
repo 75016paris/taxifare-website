@@ -43,7 +43,7 @@ def geocode_address(address):
     else:
         return None, None
 
-location_lat, location_lng = geocode_address('32 Mott Street')
+location_lat, location_lng = geocode_address('32 E 1st St Lower Level, New York, NY 10003, États-Unis')
 location_lat, location_lng
 
 # Create a map centered around the default pickup location
