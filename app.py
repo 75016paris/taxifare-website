@@ -16,7 +16,7 @@ We will warp a vessel toward your destination as soon as possible.
 
 \n
 ### WARNING
-(Make sure to hold on to your hat, the wormholes open for your shuttle’s arrival could suck it in.)
+_(Make sure to hold on to your hat, the wormholes open for your shuttle’s arrival could suck it in.)_
 ''')
 
 
