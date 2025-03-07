@@ -8,19 +8,10 @@ import numpy as np
 
 st.markdown('''
 We are a space travel company
+
+Please provide your location and desination
 ''')
 
-'''
-## Here we would like to add some controllers in order to ask the user to select the parameters of the ride
-
-1. Let's ask for:
-- date and time
-- pickup longitude
-- pickup latitude
-- dropoff longitude
-- dropoff latitude
-- passenger count
-'''
 
 date_and_time = st.text_input('date and time')
 
