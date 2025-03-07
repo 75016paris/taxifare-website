@@ -64,8 +64,6 @@ prediction = response.json()
 st.write(f"Prediction: {prediction}")
 '''
 
-https://taxifare-154686505166.europe-west1.run.app
-
 ########################################################################################################################
 
 2. Let's build a dictionary containing the parameters for our API...
