@@ -1,13 +1,11 @@
 import streamlit as st
 
 '''
-# TaxiFareModel front
+# LOOSER TAXI APP WELCOM
 '''
 
 st.markdown('''
-Remember that there are several ways to output content into your web page...
-
-Either as with the title by just creating a string (or an f-string). Or as with this paragraph using the `st.` functions
+We are a space travel company
 ''')
 
 '''
@@ -20,16 +18,16 @@ Either as with the title by just creating a string (or an f-string). Or as with 
 - dropoff longitude
 - dropoff latitude
 - passenger count
+'''
 
+st.text_input('''
 date_and_time = st.text_input('date and time', '01/01/00')
 pickup_longitude = st.number_input('pickup longitude', format="%.6f")
 pickup_latitude = st.number_input('pickup latitude', format="%.6f")
 dropoff_longitude = st.number_input('dropoff longitude', format="%.6f")
 dropoff_latitude = st.number_input('dropoff latitude', format="%.6f")
 passenger_count = st.number_input('passenger count', min_value=1, max_value=8, step=1)
-
-'''
-
+''')
 '''
 ## Once we have these, let's call our API in order to retrieve a prediction
 
