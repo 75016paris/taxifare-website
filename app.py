@@ -22,6 +22,12 @@ _Make sure to hold on to your wig, the wormholes opening, could suck it in_
 ''')
 
 
+if 'pickup_set' not in st.session_state:
+    st.session_state.pickup_set = False
+
+if 'dropoff_set' not in st.session_state:
+    st.session_state.dropoff_set = False
+
 def get_map_data():
     return pd.DataFrame(
         [[-73.985428, 40.748817], [-73.985428, 40.748817]],
@@ -31,6 +37,23 @@ def get_map_data():
 df = get_map_data()
 
 st.map(df)
+
+if not st.session_state.pickup_set:
+    if st.button("Set Pickup Location"):
+        st.session_state.pickup_longitude = st.number_input("Pickup Longitude", value=-73.985428)
+        st.session_state.pickup_latitude = st.number_input("Pickup Latitude", value=40.748817)
+        st.session_state.pickup_set = True
+else:
+    st.write(f"Pickup Location set at: ({st.session_state.pickup_longitude}, {st.session_state.pickup_latitude})")
+
+if st.session_state.pickup_set and not st.session_state.dropoff_set:
+    if st.button("Set Dropoff Location"):
+        st.session_state.dropoff_longitude = st.number_input("Dropoff Longitude", value=-73.985428)
+        st.session_state.dropoff_latitude = st.number_input("Dropoff Latitude", value=40.748817)
+        st.session_state.dropoff_set = True
+else:
+    if st.session_state.dropoff_set:
+        st.write(f"Dropoff Location set at: ({st.session_state.dropoff_longitude}, {st.session_state.dropoff_latitude})")
 
 pickup_date = st.date_input("Pickup Date", value=datetime.now().date())
 pickup_time = st.time_input("Pickup Time", value=datetime.now().time())
