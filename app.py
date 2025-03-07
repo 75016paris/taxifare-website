@@ -23,11 +23,10 @@ _Make sure to hold on to your wig, the wormholes opening, could suck it in_
 
 
 def get_map_data():
-
     return pd.DataFrame(
-            [-73.985428, 40.748817] + [-73.985428, 40.748817],
-            columns=['lat', 'lon']
-        )
+        [[-73.985428, 40.748817], [-73.985428, 40.748817]],
+        columns=['lon', 'lat']
+    )
 
 df = get_map_data()
 
