@@ -25,7 +25,6 @@ _Make sure to hold on to your wig, the wormholes opening, could suck it in_
 def get_map_data():
 
     return pd.DataFrame(
-            np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
             columns=['lat', 'lon']
         )
 
