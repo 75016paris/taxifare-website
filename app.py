@@ -20,6 +20,14 @@ Either as with the title by just creating a string (or an f-string). Or as with 
 - dropoff longitude
 - dropoff latitude
 - passenger count
+
+date and time = st.text_input('date and time', '01/01/00')
+pickup longitude = st.text_input('pickup longitude')
+pickup latitude = st.text_input('pickup latitude')
+dropoff longitude = st.text_input('dropoff longitude')
+dropoff latitude = st.text_input('dropoff latitude')
+passenger count = st.text_input('passenger count')
+
 '''
 
 '''
@@ -48,7 +56,7 @@ passenger count = st.text_input('passenger count')
 
 
 
-############################################################
+########################################################################################################################
 
 2. Let's build a dictionary containing the parameters for our API...
 
