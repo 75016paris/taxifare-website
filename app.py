@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import requests
+import numpy as np
 from datetime import datetime
+import pydeck as pdk
 
 '''
 # SPACE TRAVEL TAXI CO.
@@ -10,7 +12,7 @@ from datetime import datetime
 st.markdown(f'''
 We are a space travel company,
 
-Please provide your location and desination.
+Please provide your location and destination.
 
 We will warp a vessel toward your destination as soon as possible.
 
@@ -19,32 +21,33 @@ We will warp a vessel toward your destination as soon as possible.
 _Make sure to hold on to your wig, the wormholes opening, could suck it in_
 ''')
 
-
+# Function to get map data
 def get_map_data():
-
     return pd.DataFrame(
-            np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-            columns=['lat', 'lon']
-        )
+        np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+        columns=['lat', 'lon']
+    )
 
 df = get_map_data()
 
+# Display the map
 st.map(df)
+
+# Input fields for pickup and dropoff locations
+pickup_location = st.map(df)
+dropoff_location = st.map(df)
 
 pickup_date = st.date_input("Pickup Date", value=datetime.now().date())
 pickup_time = st.time_input("Pickup Time", value=datetime.now().time())
 pickup_datetime = datetime.combine(pickup_date, pickup_time).strftime("%Y-%m-%d %H:%M:%S")
 
+# Get coordinates from the map
 pickup_longitude = st.number_input("Pickup Longitude", value=-73.985428)
-
 pickup_latitude = st.number_input("Pickup Latitude", value=40.748817)
-
 dropoff_longitude = st.number_input("Dropoff Longitude", value=-73.985428)
-
 dropoff_latitude = st.number_input("Dropoff Latitude", value=40.748817)
 
 passenger_count = st.number_input("Number of Passengers", min_value=1, max_value=6, value=1)
-
 
 url = 'https://taxifare.lewagon.ai/predict'
 
@@ -62,18 +65,3 @@ if st.button("Predict Fare"):
 
     prediction = response.json().get("fare", "Error")
     st.markdown(f"##  Fare: ${prediction:.2f}")
-
-# params = {
-#     'pickup_datetime': pickup_datetime,
-#     'pickup_longitude': pickup_longitude,
-#     'pickup_latitude': pickup_latitude,
-#     'dropoff_longitude': dropoff_longitude,
-#     'dropoff_latitude': dropoff_latitude,
-#     'passenger_count': passenger_count
-# }
-
-# response = requests.get(url, params=params)
-# prediction = response.json()
-
-# st.write(f"Prediction: {prediction}")
-# '''
