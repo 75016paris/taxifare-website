@@ -22,12 +22,25 @@ We are a space travel company
 
 st.text_input('''
 date_and_time = st.text_input('date and time', '01/01/00')
+''')
+st.text_input('''
 pickup_longitude = st.number_input('pickup longitude', format="%.6f")
+''')
+st.text_input('''
 pickup_latitude = st.number_input('pickup latitude', format="%.6f")
+''')
+st.text_input('''
 dropoff_longitude = st.number_input('dropoff longitude', format="%.6f")
+''')
+st.text_input('''
 dropoff_latitude = st.number_input('dropoff latitude', format="%.6f")
+''')
+st.text_input('''
 passenger_count = st.number_input('passenger count', min_value=1, max_value=8, step=1)
 ''')
+
+
+
 '''
 ## Once we have these, let's call our API in order to retrieve a prediction
 
