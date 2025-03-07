@@ -22,13 +22,13 @@ We are a space travel company
 
 date_and_time = st.text_input('date and time', '01/01/00')
 
-pickup_longitude = st.text_input('pickup longitude', format="%.6f")
+pickup_longitude = st.text_input('pickup longitude')
 
-pickup_latitude = st.text_input('pickup latitude', format="%.6f")
+pickup_latitude = st.text_input('pickup latitude')
 
-dropoff_longitude = st.text_input('dropoff longitude', format="%.6f")
+dropoff_longitude = st.text_input('dropoff longitude')
 
-dropoff_latitude = st.text_input('dropoff latitude', format="%.6f")
+dropoff_latitude = st.text_input('dropoff latitude')
 
 passenger_count = st.number_input('passenger count', min_value=1, max_value=8, step=1)
 
