@@ -61,7 +61,7 @@ params = {
 response = requests.get(url, params=params)
 prediction = response.json()
 
-st.write(f"Prediction: {prediction['fare']}")
+st.write(f"Prediction: {prediction}")
 '''
 
 https://taxifare-154686505166.europe-west1.run.app
