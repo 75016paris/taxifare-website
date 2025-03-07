@@ -35,15 +35,14 @@ dropoff_latitude = st.text_input('dropoff latitude')
 passenger_count = st.number_input('passenger count', min_value=1, max_value=8, step=1)
 
 
-X_new = pd.DataFrame(dict(date_and_time=date_and_time,
-                          pickup_longitude = pickup_longitude,
-                          pickup_latitude = pickup_latitude,
-                          dropoff_longitude = dropoff_longitude,
-                          dropoff_latitude = dropoff_latitude,
-                          passenger_count = passenger_count))
+X_new = pd.DataFrame(dict(date_and_time=[date_and_time],
+                          pickup_longitude=[pickup_longitude],
+                          pickup_latitude=[pickup_latitude],
+                          dropoff_longitude=[dropoff_longitude],
+                          dropoff_latitude=[dropoff_latitude],
+                          passenger_count=[passenger_count]))
 
-
-X_new
+st.write(X_new)
 
 
 '''
