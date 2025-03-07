@@ -70,23 +70,7 @@ if st.button("Get Coordinates"):
         "format": "json"
     }
     response = requests.get(url2, params=params2)
-    if response.status_code == 200 and response.json():
-        pickup_coords = response.json()[0]
-        pickup_longitude = float(pickup_coords["lon"])
-        pickup_latitude = float(pickup_coords["lat"])
-        st.markdown(f"Pickup Coordinates: Longitude: {pickup_longitude}, Latitude: {pickup_latitude}")
-    else:
-        st.markdown("Pickup address not found.")
-
-    params2["q"] = dropoff_adress
-    response = requests.get(url2, params=params2)
-    if response.status_code == 200 and response.json():
-        dropoff_coords = response.json()[0]
-        dropoff_longitude = float(dropoff_coords["lon"])
-        dropoff_latitude = float(dropoff_coords["lat"])
-        st.markdown(f"Dropoff Coordinates: Longitude: {dropoff_longitude}, Latitude: {dropoff_latitude}")
-    else:
-        st.markdown("Dropoff address not found.")
+    respinse
 
 # Display the map
 map_data = st_folium(map, width=700, height=500)
