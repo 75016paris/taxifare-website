@@ -64,15 +64,29 @@ dropoff_adress = ""
 pickup_adress = st.text_input('pickup_adress', value=pickup_adress, key='pickup_adress')
 dropoff_adress = st.text_input('dropoff_adress', value=dropoff_adress, key='dropoff_adress')
 
-if st.button("Adress"):
+if st.button("Get Coordinates"):
     params2 = {
-        "pickup_adress": dropoff_adress,
-        "dropoff_adress": dropoff_adress
+        "q": pickup_adress,
+        "format": "json"
     }
     response = requests.get(url2, params=params2)
+    if response.status_code == 200 and response.json():
+        pickup_coords = response.json()[0]
+        pickup_longitude = float(pickup_coords["lon"])
+        pickup_latitude = float(pickup_coords["lat"])
+        st.markdown(f"Pickup Coordinates: Longitude: {pickup_longitude}, Latitude: {pickup_latitude}")
+    else:
+        st.markdown("Pickup address not found.")
 
-    prediction = response.json().get("fare", "Error")
-    st.markdown(prediction)
+    params2["q"] = dropoff_adress
+    response = requests.get(url2, params=params2)
+    if response.status_code == 200 and response.json():
+        dropoff_coords = response.json()[0]
+        dropoff_longitude = float(dropoff_coords["lon"])
+        dropoff_latitude = float(dropoff_coords["lat"])
+        st.markdown(f"Dropoff Coordinates: Longitude: {dropoff_longitude}, Latitude: {dropoff_latitude}")
+    else:
+        st.markdown("Dropoff address not found.")
 
 # Display the map
 map_data = st_folium(map, width=700, height=500)
