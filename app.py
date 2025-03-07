@@ -10,7 +10,7 @@ st.markdown(f'''
 We are a space travel company
 
 Please provide your location and desination
-The space shuttle will pick you up in {np.random(100,3300)}minutes
+The space shuttle will pick you up in asap
 ''')
 
 
