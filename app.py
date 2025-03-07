@@ -21,12 +21,12 @@ Either as with the title by just creating a string (or an f-string). Or as with 
 - dropoff latitude
 - passenger count
 
-date and time = st.text_input('date and time', '01/01/00')
-pickup longitude = st.text_input('pickup longitude')
-pickup latitude = st.text_input('pickup latitude')
-dropoff longitude = st.text_input('dropoff longitude')
-dropoff latitude = st.text_input('dropoff latitude')
-passenger count = st.text_input('passenger count')
+date_and_time = st.text_input('date and time', '01/01/00')
+pickup_longitude = st.number_input('pickup longitude', format="%.6f")
+pickup_latitude = st.number_input('pickup latitude', format="%.6f")
+dropoff_longitude = st.number_input('dropoff longitude', format="%.6f")
+dropoff_latitude = st.number_input('dropoff latitude', format="%.6f")
+passenger_count = st.number_input('passenger count', min_value=1, max_value=8, step=1)
 
 '''
 
