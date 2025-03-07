@@ -16,7 +16,9 @@ The space shuttle will pick you up in asap
 ''')
 
 
-pickup_datetime = st.date_input("Date & Time", value=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+pickup_date = st.date_input("Pickup Date", value=datetime.now().date())
+pickup_time = st.time_input("Pickup Time", value=datetime.now().time())
+pickup_datetime = datetime.combine(pickup_date, pickup_time).strftime("%Y-%m-%d %H:%M:%S")
 
 pickup_longitude = st.number_input("Pickup Longitude", value=-73.985428)
 
