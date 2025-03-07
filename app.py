@@ -56,26 +56,12 @@ dropoff_marker.add_to(map)
 # Display the map
 map_data = st_folium(map, width=700, height=500)
 
-# Update coordinates based on marker drag
-if map_data and 'pickup_marker' in map_data:
-    if map_data['pickup_marker']['popup'] == "Pickup Location":
-        pickup_longitude, pickup_latitude = map_data['pickup_marker']['lng'], map_data['pickup_marker']['lat']
-    elif map_data['dropoff_marker']['popup'] == "Dropoff Location":
-        dropoff_longitude, dropoff_latitude = map_data['dropoff_marker']['lng'], map_data['dropoff_marker']['lat']
-
 # Display updated coordinates in input fields
 pickup_longitude_input = st.number_input("Pickup Longitude", value=pickup_longitude, key="pickup_longitude")
 pickup_latitude_input = st.number_input("Pickup Latitude", value=pickup_latitude, key="pickup_latitude")
 dropoff_longitude_input = st.number_input("Dropoff Longitude", value=dropoff_longitude, key="dropoff_longitude")
 dropoff_latitude_input = st.number_input("Dropoff Latitude", value=dropoff_latitude, key="dropoff_latitude")
 passenger_count = st.number_input("Number of Passengers", min_value=1, max_value=6, value=1)
-
-# Update coordinates based on marker drag
-if map_data and 'last_active_drawing' in map_data:
-    if map_data['last_active_drawing']['popup'] == "Pickup Location":
-        pickup_longitude, pickup_latitude = map_data['last_active_drawing']['lng'], map_data['last_active_drawing']['lat']
-    elif map_data['last_active_drawing']['popup'] == "Dropoff Location":
-        dropoff_longitude, dropoff_latitude = map_data['last_active_drawing']['lng'], map_data['last_active_drawing']['lat']
 
 url = 'https://taxifare.lewagon.ai/predict'
 
