@@ -38,6 +38,39 @@ if url == 'https://taxifare.lewagon.ai/predict':
 
 '''
 
+
+date and time = st.text_input('date and time', '01/01/00')
+pickup longitude = st.text_input('pickup longitude')
+pickup latitude = st.text_input('pickup latitude')
+dropoff longitude = st.text_input('dropoff longitude')
+dropoff latitude = st.text_input('dropoff latitude')
+passenger count = st.text_input('passenger count')
+
+st.write('The current movie title is', title)
+
+date and time
+pickup longitude
+pickup latitude
+dropoff longitude
+dropoff latitude
+passenger count
+
+def get_slider_data():
+
+    return pd.DataFrame({
+          'first column': list(range(1, 11)),
+          'second column': np.arange(10, 101, 10)
+        })
+
+df = get_slider_data()
+
+option = st.slider('Select a modulus', 1, 10, 3)
+
+filtered_df = df[df['first column'] % option == 0]
+
+st.write(filtered_df)
+
+
 2. Let's build a dictionary containing the parameters for our API...
 
 3. Let's call our API using the `requests` package...
