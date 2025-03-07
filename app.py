@@ -15,7 +15,7 @@ Please provide your location and desination,
 The space shuttle will pick you up in asap
 ''')
 
-pickup_datetime = st.text_input("Date & Time (YYYY-MM-DD HH:MM:SS)", value=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+pickup_datetime = st.text_input("Date & Time", value=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 pickup_longitude = st.number_input("Pickup Longitude", value=-73.985428)
 
@@ -52,7 +52,7 @@ if st.button("Predict Fare"):
     response = requests.get(url, params=params)
 
     prediction = response.json().get("fare", "Error")
-    st.success(f"Estimated Fare: ${prediction:.2f}")
+    st.markdown(f"## Estimated Fare: ${prediction:.2f}")
 
 # params = {
 #     'pickup_datetime': pickup_datetime,
