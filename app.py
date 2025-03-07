@@ -75,11 +75,9 @@ def get_marker_coordinates(marker):
     return marker.location[0], marker.location[1]
 
 # Get latitude and longitude of the dropoff marker
-if st.button('update Pickup & Dropoff'):
-    d_dropoff_latitude, d_dropoff_longitude = get_marker_coordinates(dropoff_marker)
-    p_dropoff_latitude, p_dropoff_longitude = get_marker_coordinates(pickup_marker)
-
-    d_dropoff_latitude, d_dropoff_longitude, p_dropoff_latitude, p_dropoff_longitude
+if st.button('Update Pickup & Dropoff'):
+    f"PICKUP {pickup_longitude, pickup_latitude = get_marker_coordinates(pickup_marker)"}
+    f"DROPOFF {dropoff_longitude, dropoff_latitude = get_marker_coordinates(dropoff_marker)"}
 
 url = 'https://taxifare.lewagon.ai/predict'
 
