@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
+from datetime import datetime
 
 '''
 # LOOSER TAXI APP WELCOM
@@ -14,7 +15,7 @@ Please provide your location and desination,
 The space shuttle will pick you up in asap
 ''')
 
-pickup_datetime = st.text_input("Date & Time (YYYY-MM-DD HH:MM:SS)")
+pickup_datetime = st.text_input("Date & Time (YYYY-MM-DD HH:MM:SS)", value=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 pickup_longitude = st.number_input("Pickup Longitude", value=-73.985428)
 
