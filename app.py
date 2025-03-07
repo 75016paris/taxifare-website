@@ -20,6 +20,17 @@ _Make sure to hold on to your wig, the wormholes opening, could suck it in_
 ''')
 
 
+def get_map_data():
+
+    return pd.DataFrame(
+            np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+            columns=['lat', 'lon']
+        )
+
+df = get_map_data()
+
+st.map(df)
+
 pickup_date = st.date_input("Pickup Date", value=datetime.now().date())
 pickup_time = st.time_input("Pickup Time", value=datetime.now().time())
 pickup_datetime = datetime.combine(pickup_date, pickup_time).strftime("%Y-%m-%d %H:%M:%S")
