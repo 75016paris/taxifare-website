@@ -47,12 +47,17 @@ passenger_count = st.number_input("Number of Passengers", min_value=1, max_value
 
 # st.map(df)
 
-data = pd.DataFrame({
+pickup = pd.DataFrame({
     'latitude': [pickup_latitude],
     'longitude': [pickup_longitude]
 })
 
-st.map(data, zoom=15)
+dropoff = pd.DataFrame({
+    'latitude': [pickup_latitude],
+    'longitude': [pickup_longitude]
+})
+
+st.map(pickup, dropoff, zoom=15)
 
 
 url = 'https://taxifare.lewagon.ai/predict'
