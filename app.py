@@ -72,9 +72,9 @@ passenger_count = st.number_input("Number of Passengers", min_value=1, max_value
 
 # Update coordinates based on marker drag
 if map_data and 'last_object_clicked' in map_data:
-    if map_data['last_object_clicked'][0] == "Pickup Location":
+    if map_data['last_object_clicked']['popup'] == "Pickup Location":
         pickup_longitude, pickup_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
-    elif map_data['last_object_clicked'][0] == "Dropoff Location":
+    elif map_data['last_object_clicked']['popup'] == "Dropoff Location":
         dropoff_longitude, dropoff_latitude = map_data['last_object_clicked']['lng'], map_data['last_object_clicked']['lat']
 
 url = 'https://taxifare.lewagon.ai/predict'
